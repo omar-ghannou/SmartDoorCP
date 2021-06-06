@@ -49,7 +49,7 @@ public class PersonAdder {
             PersonGroupData person = personGroupData[0];
             if(person == null) return -1;
             try {
-                PersonAdder.CreatePersonGroup(person.context,person.PersonGroupId,person.PersonGroupName);
+                //PersonAdder.CreatePersonGroup(person.context,person.PersonGroupId,person.PersonGroupName);
                 PersonAdder.AddPersonToGroup(person.context,person.PersonGroupId,person.PersonName,person.bitmaps);
                 PersonAdder.TrainingAI(person.context,person.PersonGroupId);
                 return 0;
@@ -108,16 +108,18 @@ public class PersonAdder {
 
     private synchronized static void TrainingAI(Context context,String personGroupID) throws IOException, ClientException, InterruptedException {
         faceServiceClient.trainPersonGroup(personGroupID);
+        String status;
         TrainingStatus trainingStatus = null;
         while(true){
             trainingStatus = faceServiceClient.getPersonGroupTrainingStatus(personGroupID);
             if(trainingStatus.status != TrainingStatus.Status.Running){
-                Log.d("FaceAPIStatus",trainingStatus.status.name());
+                status = trainingStatus.status.name();
+                Log.d("FaceAPIStatus",status);
                 break;
             }
             Thread.sleep(1000);
         }
-
+        
     }
 
 

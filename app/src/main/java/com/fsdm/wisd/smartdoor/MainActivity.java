@@ -42,12 +42,12 @@ public class MainActivity extends AppCompatActivity {
         Add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!identifiedBitmaps.isEmpty())
+                identifiedBitmaps.clear();
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.CAMERA}, 110);
                 }
-                else if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
-                    getPickImageIntent();
-                }
+                getPickImageIntent();
 
             }
         });
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this,"Please type the person name",Toast.LENGTH_LONG).show();
             return;
         }
-        if(PersonAdder.cameraIndex < 2) {
+        if(PersonAdder.cameraIndex < 5) {
             Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(cameraIntent, 101);
             PersonAdder.cameraIndex++;
@@ -72,12 +72,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == 101 && resultCode == RESULT_OK){
-            if(PersonAdder.cameraIndex==2)
+            if(PersonAdder.cameraIndex==5)
             {
                 PersonGroupData personGroupData = new PersonGroupData(MainActivity.this, "2021", "SmartDoorUsers", username.getText().toString() , identifiedBitmaps);
                 PersonAdder.add.execute(personGroupData);
                 PersonAdder.cameraIndex = 0;
-                identifiedBitmaps.clear();
                 Toast.makeText(this,"The person is added successfully",Toast.LENGTH_LONG).show();
                 return;
             }

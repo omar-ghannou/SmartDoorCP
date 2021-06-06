@@ -12,12 +12,14 @@
         android:layout_height="0dp"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
-        android:src="@mipmap/custom_background"
+        android:src="@mipmap/b_image_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/custom_background" />
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@mipmap/b_image_background" />
 
     <TextView
         android:id="@+id/Text"
@@ -43,7 +45,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="16dp"
         android:gravity="center"
-        android:text="blablablablablabab"
+        android:text="This Application is dedicated for administration purposes for SmartDoor system, here you can add a new person face in the allowed faces to open the door by typing his name and click on ADD button to take 5 pictures of that person face, and he will be in the allowed people list automatically in the users side APP"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,24 +53,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Text" />
 
-    <Button
-        android:id="@+id/add_b"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/PersonName" />
-
     <EditText
         android:id="@+id/PersonName"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/shape"
         android:ems="10"
         android:hint="Person name"
         android:inputType="textPersonName"
@@ -76,7 +68,24 @@
         android:textColor="#FFFFFF"
         android:textColorHint="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/intro" />
+
+    <Button
+        android:id="@+id/add_b"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="128dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="128dp"
+        android:background="@drawable/b_shape_2"
+        android:text="ADD"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PersonName" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
